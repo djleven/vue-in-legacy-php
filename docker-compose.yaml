@@ -1,0 +1,15 @@
+version: '2'
+
+services:
+  legacy-php-vue:
+    image: thecodingmachine/php:7.3-v3-apache-node12
+    ports:
+      - ${APACHE_HTTP_PORT_BIND}
+      - ${WEBPACK_DEV_SERVER_PORT_BIND}
+    volumes:
+      - ./html:/var/www/html
+      #- ./html:/var/www/html:Z # selinux (may be needed for RHEL, CentOS, and Fedora)
+      - ./vue-app:/var/www/vue-app
+      #- ./php-vue:/var/www/vue-app:Z # Z for selinux
+      - ./php-app:/var/www/php-app
+      #- ./php-app:/var/www/php-app:Z # Z for selinux
